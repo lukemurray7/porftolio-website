@@ -19,7 +19,7 @@ export const navlinks = [
   },
   {
     href: "/projects",
-    label: "Projects",
+    label: "Work",
     icon: IconBriefcase2,
   },
   {

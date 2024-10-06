@@ -161,8 +161,9 @@ export const products = [
             <li>Create efficient backend services and APIs</li>
             <li>Manage the entire development lifecycle, from initial concept to deployment and maintenance</li>
           </ul>
-          Through these freelance projects, I've honed my skills in project management, 
-          client communication, and delivering high-quality software solutions that meet specific business needs.
+          Through these freelance projects, I&apos;ve honed my skills in project
+          management, client communication, and delivering high-quality software
+          solutions that meet specific business needs.
         </p>
       </div>
     ),
