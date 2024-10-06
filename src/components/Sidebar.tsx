@@ -22,13 +22,18 @@ export const Sidebar = () => {
       setOpen(!isMobile());
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isMobile() && open && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+      if (
+        isMobile() &&
+        open &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
         setOpen(false);
       }
     };
@@ -42,7 +47,7 @@ export const Sidebar = () => {
   return (
     <>
       <AnimatePresence>
-        {(open || !isMobile()) && (
+        {open && (
           <>
             <motion.div
               ref={sidebarRef}
