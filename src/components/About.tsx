@@ -49,7 +49,7 @@ export default function About() {
         <Paragraph className="mt-4">
           Outside of work, I enjoy spending time outdoors. I recently moved to
           the countryside in Anglesey, Wales, and got a puppy (called Console
-          lol). We&apos;ve been setting up a garden, renovating our house, and
+          lol). We&apos;ve been setting up a garden, renovating our house,
           trying (with mixed results) to train Console and generally just
           enjoying life.
         </Paragraph>
