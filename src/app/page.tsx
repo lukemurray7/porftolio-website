@@ -12,14 +12,13 @@ export default function Home() {
       <span className="text-4xl">👋</span>
       <Heading className="font-black">Hello there! I&apos;m Luke</Heading>
       <Paragraph className="max-w-xl mt-4">
-        I&apos;m a full-stack software engineer that loves{" "}
-        <Highlight>building products</Highlight> and web apps using the latest
+        I&apos;m a senior full-stack software engineer that loves{" "}
+        <Highlight>building products</Highlight> using the latest
         technologies.
       </Paragraph>
       <Paragraph className="max-w-xl mt-4">
-        I&apos;m a senior software engineer with{" "}
-        <Highlight>8 years of experience</Highlight> building scalable web apps
-        and products in startup environments.
+        I have over <Highlight>8 years of experience</Highlight> building scalable web apps
+        and enterprise products in startup environments, utilising a modern tech stack.
       </Paragraph>
       <Heading
         as="h2"

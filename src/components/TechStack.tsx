@@ -36,6 +36,30 @@ export const TechStack = () => {
       className: "h-10 w-12",
     },
     {
+      title: "React",
+      src: "/images/logos/react-logo.png",
+
+      className: "h-10 w-12",
+    },
+    {
+      title: "Python",
+      src: "/images/logos/python-logo.png",
+
+      className: "h-10 w-12",
+    },
+    {
+      title: "GCP",
+      src: "/images/logos/gcp-logo.png",
+
+      className: "h-10 w-12",
+    },
+    {
+      title: "GraphQL",
+      src: "/images/logos/graphql-logo.png",
+
+      className: "h-10 w-12",
+    },
+    {
       title: "Tailwind",
       src: "/images/logos/tailwind.png",
 
