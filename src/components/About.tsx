@@ -1,3 +1,4 @@
+
 "use client";
 import { Paragraph } from "@/components/Paragraph";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export default function About() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 my-10">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 my-10">
         {images.map((image, index) => (
           <motion.div
             key={image}
@@ -26,7 +27,7 @@ export default function About() {
               width={200}
               height={400}
               alt="about"
-              className="rounded-md object-cover transform rotate-3 shadow-xl block w-full h-40 md:h-60 hover:rotate-0 transition duration-200"
+              className="rounded-md object-cover transform rotate-3 shadow-xl block w-full h-40 md:h-60 lg:h-40 xl:h-60 hover:rotate-0 transition duration-200"
             />
           </motion.div>
         ))}

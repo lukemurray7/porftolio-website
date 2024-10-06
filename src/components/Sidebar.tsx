@@ -3,109 +3,38 @@ import { navlinks } from "@/constants/navlinks";
 import { Navlink } from "@/types/navlink";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import React, { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import React from "react";
 import { twMerge } from "tailwind-merge";
 import { Heading } from "./Heading";
 import { socials } from "@/constants/socials";
 import { Badge } from "./Badge";
-import { AnimatePresence, motion } from "framer-motion";
-import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
-import { isMobile } from "@/lib/utils";
 
 export const Sidebar = () => {
-  const [open, setOpen] = useState(!isMobile());
-  const sidebarRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setOpen(!isMobile());
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        isMobile() &&
-        open &&
-        sidebarRef.current &&
-        !sidebarRef.current.contains(event.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [open]);
-
   return (
-    <>
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              ref={sidebarRef}
-              initial={{ x: -200 }}
-              animate={{ x: 0 }}
-              transition={{ duration: 0.2, ease: "linear" }}
-              exit={{ x: -200 }}
-              className="px-6 z-[100] py-10 bg-neutral-100 max-w-[14rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between"
-            >
-              <div className="flex-1 overflow-auto">
-                <SidebarHeader />
-                <Navigation setOpen={setOpen} />
-              </div>
-              <div onClick={() => isMobile() && setOpen(false)}>
-                <Badge href="/resume" text="Read Resume" />
-              </div>
-            </motion.div>
-            {isMobile() && open && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-black bg-opacity-50 z-[99]"
-                onClick={() => setOpen(false)}
-              />
-            )}
-          </>
-        )}
-      </AnimatePresence>
-      {isMobile() && (
-        <button
-          className="fixed lg:hidden bottom-4 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-50"
-          onClick={() => setOpen(!open)}
-        >
-          <IconLayoutSidebarRightCollapse className="h-4 w-4 text-secondary" />
-        </button>
-      )}
-    </>
+    <aside className="hidden md:flex md:flex-col md:fixed md:left-0 md:top-0 md:bottom-0 md:w-64 bg-neutral-100 p-6 overflow-y-auto">
+      <div className="flex-1">
+        <SidebarHeader />
+        <Navigation />
+      </div>
+      <div>
+        <Badge href="/resume" text="Read Resume" />
+      </div>
+    </aside>
   );
 };
 
-export const Navigation = ({
-  setOpen,
-}: {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+export const Navigation = () => {
   const pathname = usePathname();
 
   const isActive = (href: string) => pathname === href;
 
   return (
-    <div className="flex flex-col space-y-1 my-10 relative z-[100]">
+    <div className="flex flex-col space-y-1 my-10">
       {navlinks.map((link: Navlink) => (
         <Link
           key={link.href}
           href={link.href}
-          onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
             "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
             isActive(link.href) && "bg-white shadow-lg text-primary"
@@ -134,12 +63,7 @@ export const Navigation = ({
             "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
           )}
         >
-          <link.icon
-            className={twMerge(
-              "h-4 w-4 flex-shrink-0",
-              isActive(link.href) && "text-sky-500"
-            )}
-          />
+          <link.icon className="h-4 w-4 flex-shrink-0" />
           <span>{link.label}</span>
         </Link>
       ))}

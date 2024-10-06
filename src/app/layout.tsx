@@ -1,9 +1,8 @@
 import { Sidebar } from "@/components/Sidebar";
+import { MobileNavBar } from "@/components/MobileNavBar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { twMerge } from "tailwind-merge";
-import { Footer } from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,18 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={twMerge(
-          inter.className,
-          "flex antialiased min-h-screen bg-gray-100 pb-20"
-        )}
-      >
-        <Sidebar />
-        <div className="lg:pl-2 lg:pt-2 bg-gray-100 flex-1 overflow-y-auto">
-          <div className="flex-1 bg-white min-h-screen lg:rounded-tl-xl border border-transparent lg:border-neutral-200">
+      <body className={inter.className}>
+        <div className="flex flex-col md:flex-row min-h-screen">
+          <Sidebar />
+          <main className="flex-grow md:ml-64 p-8 md:p-12 pb-20 md:pb-12 overflow-auto">
             {children}
-            <Footer />
-          </div>
+          </main>
+          <MobileNavBar />
         </div>
       </body>
     </html>
