@@ -11,7 +11,7 @@ export default function Home() {
     <Container>
       <div className="relative mb-8 flex justify-end">
         <Badge
-          href="/Luke_Murray_CV.pdf"
+          href="/lukemurraycv.pdf"
           text="View as PDF"
         />
       </div>

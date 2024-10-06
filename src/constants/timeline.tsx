@@ -2,7 +2,7 @@ export const timeline = [
   {
     company: "FLYR Hospitality",
     title: "Senior Software Engineer",
-    date: "2022 - Present",
+    date: "2023 - Present",
     description:
       "AI-powered revenue management system for hospitality businesses",
     responsibilities: [
